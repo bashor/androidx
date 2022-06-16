@@ -89,6 +89,12 @@ def addMavenRepositories(RepositoryHandler handler) {
             }
         }
     }
+    handler.maven {
+        def usrHome = System.getenv("HOME")
+        def path = "file://" + usrHome + "/.m2/repository"
+        println("Global mavenLocal path  = " + path)
+        url(path)
+    }
 }
 
 ext.repos.addMavenRepositories = this.&addMavenRepositories
